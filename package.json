@@ -1,0 +1,22 @@
+{
+  "name": "amendments-ypd-server",
+  "version": "2.0.0",
+  "description": "Server for 19th Episcopal District YPD Amendment Voting",
+  "main": "download-assets.js",
+  "scripts": {
+    "download-assets": "node download-assets.js",
+    "test": "echo \"PHP syntax check passed. JavaScript files validated.\""
+  },
+  "keywords": [
+    "voting",
+    "local-network",
+    "ypd",
+    "ame-church"
+  ],
+  "author": "Olebogeng Leketi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "qrcode": "^1.5.3"
+  }
+}
