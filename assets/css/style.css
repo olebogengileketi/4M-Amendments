@@ -1,0 +1,652 @@
+/* ============================================================
+   19th Episcopal District YPD — Quadrennial Amendment Voting
+   Design tokens: forest green + white, ledger/citation motif
+   ============================================================ */
+
+:root {
+  /* Color */
+  --forest-900: #0B2B22;   /* ink / body text */
+  --forest-700: #16412F;   /* primary brand green */
+  --forest-600: #1F5B3F;   /* hover / active green */
+  --forest-500: #2D7A54;   /* mid accent, chart "Yes" */
+  --forest-100: #E7F2EB;   /* light wash background */
+  --forest-050: #F4FAF6;   /* faint tint */
+  --parchment: #FBFAF6;    /* warm off-white page background */
+  --white: #FFFFFF;
+  --slate-700: #3A4A44;    /* neutral "No" tone, green-tinted charcoal */
+  --slate-100: #E7EAE8;
+  --line: #D8E4DD;
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --radius: 10px;
+  --shadow-card: 0 1px 2px rgba(11,43,34,.06), 0 8px 24px rgba(11,43,34,.06);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--forest-900);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--forest-900);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--forest-600);
+}
+
+a { color: var(--forest-700); }
+
+/* ---------- Top bar ---------- */
+.ypd-topbar {
+  background: var(--forest-700);
+  color: var(--white);
+  padding: .85rem 0;
+}
+.ypd-topbar .brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--white);
+  letter-spacing: -.01em;
+}
+.ypd-topbar .brand small {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--forest-100);
+  opacity: .85;
+}
+
+/* ---------- Layout shell ---------- */
+.ypd-shell {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+.ypd-shell.wide { max-width: 1120px; }
+
+/* ---------- Cards ---------- */
+.card-panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- Buttons ---------- */
+.btn-forest {
+  background: var(--forest-700);
+  border-color: var(--forest-700);
+  color: var(--white);
+  font-weight: 600;
+}
+.btn-forest:hover, .btn-forest:focus {
+  background: var(--forest-600);
+  border-color: var(--forest-600);
+  color: var(--white);
+}
+.btn-outline-forest {
+  border: 1.5px solid var(--forest-700);
+  color: var(--forest-700);
+  font-weight: 600;
+  background: transparent;
+}
+.btn-outline-forest:hover {
+  background: var(--forest-100);
+  color: var(--forest-700);
+}
+
+/* ---------- Check-in form ---------- */
+.checkin-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.checkin-hero .display {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+.checkin-hero p {
+  color: var(--slate-700);
+  max-width: 46ch;
+  margin: .5rem auto 0;
+}
+.form-label {
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--forest-900);
+}
+.form-control {
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  padding: .65rem .85rem;
+}
+.form-control:focus {
+  border-color: var(--forest-600);
+  box-shadow: 0 0 0 .2rem rgba(31, 91, 63, .15);
+}
+
+/* ---------- Progress ---------- */
+.ballot-progress-track {
+  height: 8px;
+  background: var(--slate-100);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.ballot-progress-fill {
+  height: 100%;
+  background: var(--forest-600);
+  transition: width .25s ease;
+}
+.progress-label {
+  font-size: .8rem;
+  color: var(--slate-700);
+  font-weight: 600;
+}
+
+/* ---------- Ledger / amendment card (signature element) ---------- */
+.ledger-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 1.75rem 1.5rem 1.5rem 1.75rem;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid var(--forest-700);
+}
+.ledger-card.is-answered { border-left-color: var(--forest-500); }
+.ledger-card .proposal-no {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--forest-700);
+  line-height: 1;
+}
+.ledger-card .citation-line {
+  font-size: .78rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--slate-700);
+  font-weight: 600;
+  margin-top: .35rem;
+  padding-top: .5rem;
+  border-top: 1px dashed var(--line);
+}
+.ledger-card .citation-line span + span::before {
+  content: "·";
+  margin: 0 .5em;
+  color: var(--line);
+}
+.ledger-card .amendment-text {
+  margin-top: 1rem;
+  font-size: 1.02rem;
+  color: var(--forest-900);
+}
+.ledger-card .summary-tag {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--forest-700);
+  background: var(--forest-100);
+  border-radius: 99px;
+  padding: .2rem .65rem;
+  margin-bottom: .35rem;
+}
+
+/* Vote toggle group */
+.vote-group {
+  display: flex;
+  gap: .6rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+.vote-btn {
+  flex: 1 1 0;
+  min-width: 110px;
+  padding: .7rem .5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .02em;
+  cursor: pointer;
+  text-align: center;
+  transition: all .15s ease;
+  user-select: none;
+}
+.vote-btn[data-choice="yes"] {
+  border: 1.5px solid var(--forest-700);
+  background: var(--white);
+  color: var(--forest-700);
+}
+.vote-btn[data-choice="yes"].active {
+  background: var(--forest-700);
+  color: var(--white);
+}
+.vote-btn[data-choice="no"] {
+  border: 1.5px solid var(--slate-700);
+  background: var(--white);
+  color: var(--slate-700);
+}
+.vote-btn[data-choice="no"].active {
+  background: var(--slate-700);
+  color: var(--white);
+}
+.vote-btn[data-choice="abstain"] {
+  border: 1.5px dashed var(--line);
+  background: var(--white);
+  color: var(--slate-700);
+}
+.vote-btn[data-choice="abstain"].active {
+  background: var(--forest-050);
+  border-color: var(--forest-600);
+  color: var(--forest-700);
+  border-style: solid;
+}
+.vote-btn:focus-visible {
+  outline: 3px solid var(--forest-500);
+  outline-offset: 2px;
+}
+
+/* ---------- Confirmation ---------- */
+.confirm-seal {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--forest-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  color: var(--forest-700);
+}
+
+/* ---------- Results page ---------- */
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  box-shadow: var(--shadow-card);
+}
+.stat-card .stat-value {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--forest-700);
+  line-height: 1;
+}
+.stat-card .stat-label {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--slate-700);
+  font-weight: 600;
+  margin-top: .35rem;
+}
+.live-dot {
+  width: 8px; height: 8px;
+  background: #2D7A54;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: .4rem;
+  animation: pulse-dot 1.8s infinite;
+}
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(45,122,84,.5); }
+  70% { box-shadow: 0 0 0 8px rgba(45,122,84,0); }
+  100% { box-shadow: 0 0 0 0 rgba(45,122,84,0); }
+}
+.article-filter-chip {
+  border: 1.5px solid var(--line);
+  background: var(--white);
+  color: var(--forest-900);
+  border-radius: 99px;
+  padding: .35rem .9rem;
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.article-filter-chip.active {
+  background: var(--forest-700);
+  border-color: var(--forest-700);
+  color: var(--white);
+}
+.results-error {
+  background: #FFF8F0;
+  border: 1px solid #F0D0B0;
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  color: var(--slate-700);
+}
+.result-card { margin-bottom: 1.25rem; }
+.result-card canvas {
+  max-height: 160px;
+  min-height: 100px;
+}
+
+/* ---------- Admin ---------- */
+.admin-topbar { background: var(--forest-900); }
+.table-amendments th {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--slate-700);
+  border-bottom-width: 2px;
+}
+.badge-inactive {
+  background: var(--slate-100);
+  color: var(--slate-700);
+}
+.badge-active {
+  background: var(--forest-100);
+  color: var(--forest-700);
+}
+
+@media (max-width: 576px) {
+  .ledger-card { padding: 1.4rem 1.1rem 1.25rem 1.25rem; }
+  .vote-btn { min-width: 90px; }
+}
+
+/* ============================================================
+   Comment / Feedback vote option
+   ============================================================ */
+
+/* ── Comment vote button ── */
+.vote-btn--comment {
+  border: 1.5px dashed #B0842A;
+  background: var(--white);
+  color: #7A5A1A;
+  flex-basis: 100%;       /* sits on its own row so it stands apart */
+  min-width: unset;
+  font-size: .85rem;
+  letter-spacing: .01em;
+}
+.vote-btn--comment.active {
+  background: #FFF8EC;
+  border-color: #B0842A;
+  border-style: solid;
+  color: #7A5A1A;
+}
+.vote-btn--comment:focus-visible {
+  outline: 3px solid #C9961F;
+  outline-offset: 2px;
+}
+
+/* ── Comment / Feedback collapsible panel ── */
+.comment-panel {
+  margin-top: 0;
+  padding: 0;                /* collapsed: no padding */
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height .35s ease, opacity .25s ease, margin-top .25s ease,
+              padding .25s ease;
+}
+/* JS removes d-none first, then adds --open — this keeps display:block during the transition */
+.comment-panel:not(.d-none) {
+  display: block !important;
+}
+.comment-panel.comment-panel--open {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 1rem;
+  padding: 0;                /* inner elements handle their own spacing */
+}
+
+/* ── Warning banner ── */
+.comment-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  background: #FFF8EC;
+  border: 1.5px solid #E8C87A;
+  border-radius: 8px;
+  padding: .85rem 1rem;
+  font-size: .88rem;
+  color: #5A3E10;
+  line-height: 1.5;
+}
+.comment-warning-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: .05rem;
+}
+.comment-warning strong {
+  display: block;
+  color: #7A5A1A;
+  margin-bottom: .2rem;
+}
+
+/* ── Comment textarea ── */
+.comment-textarea {
+  font-size: .92rem;
+  border: 1.5px solid #E8C87A;
+  background: #FFFDF7;
+  resize: vertical;
+  min-height: 100px;
+}
+.comment-textarea:focus {
+  border-color: #B0842A;
+  box-shadow: 0 0 0 .2rem rgba(176, 132, 42, .18);
+  background: var(--white);
+}
+
+/* ── Character counter ── */
+.comment-char-count {
+  text-align: right;
+  font-size: .75rem;
+  color: var(--slate-700);
+  margin-top: .3rem;
+  letter-spacing: .01em;
+}
+.comment-char-count.near-limit {
+  color: #B0842A;
+  font-weight: 600;
+}
+
+/* ============================================================
+   Context tabs — Original Constitution & Rationale
+   Clean text-link style, no icons
+   ============================================================ */
+
+.ctx-tabs {
+  border-top: 1px dashed var(--line);
+  padding-top: .85rem;
+  margin-bottom: .1rem;
+}
+
+/* ── Tab bar: inline text triggers ── */
+.ctx-tab-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* Separator dot between tabs */
+.ctx-tab-bar .ctx-tab + .ctx-tab::before {
+  content: '·';
+  color: var(--line);
+  font-size: 1rem;
+  margin: 0 .55rem;
+  pointer-events: none;
+}
+
+.ctx-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--forest-600);
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color .15s ease, text-decoration-color .15s ease;
+  user-select: none;
+}
+.ctx-tab:hover {
+  color: var(--forest-700);
+  text-decoration-color: var(--forest-500);
+}
+.ctx-tab--active {
+  color: var(--forest-900);
+  text-decoration-color: var(--forest-700);
+}
+.ctx-tab--active::after {
+  content: '▴';
+  font-size: .6rem;
+  margin-left: .2rem;
+  color: var(--forest-600);
+}
+.ctx-tab:not(.ctx-tab--active)::after {
+  content: '▾';
+  font-size: .6rem;
+  margin-left: .2rem;
+  color: var(--line);
+}
+.ctx-tab:focus-visible {
+  outline: 2px solid var(--forest-500);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Expanding content panel ── */
+.ctx-panel {
+  margin-top: 0;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height .3s ease, opacity .2s ease, transform .2s ease,
+              margin-top .2s ease;
+}
+.ctx-panel:not(.d-none) {
+  display: block !important;
+}
+.ctx-panel.ctx-panel--open {
+  max-height: 800px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: .75rem;
+}
+
+.ctx-panel-inner {
+  background: var(--forest-050);
+  border-left: 3px solid var(--forest-500);
+  border-radius: 0 8px 8px 0;
+  padding: .85rem 1rem;
+  font-size: .88rem;
+  color: var(--forest-900);
+  line-height: 1.7;
+}
+
+.ctx-panel-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--forest-600);
+  margin-bottom: .45rem;
+}
+
+/* ============================================================
+   Admin — Comments Received section
+   ============================================================ */
+
+.admin-comments-group {
+  overflow: hidden;
+}
+
+.admin-comments-group-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .4rem;
+  padding: .85rem 1.25rem;
+  background: var(--forest-100);
+  border-bottom: 1px solid var(--line);
+  font-size: .88rem;
+}
+
+.admin-comments-badge {
+  background: var(--forest-700);
+  color: var(--white);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .25em .6em;
+  border-radius: 99px;
+}
+
+.admin-comments-list {
+  padding: 0 1.25rem;
+}
+
+.admin-comment-item {
+  padding: 1rem 0;
+}
+.admin-comment-item--divider {
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-comment-meta {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .3rem .75rem;
+  margin-bottom: .45rem;
+  font-size: .8rem;
+}
+.admin-comment-author {
+  font-weight: 700;
+  color: var(--forest-900);
+}
+.admin-comment-church {
+  color: var(--slate-700);
+}
+.admin-comment-time {
+  color: var(--slate-700);
+  font-size: .75rem;
+  margin-left: auto;
+}
+
+.admin-comment-text {
+  font-size: .92rem;
+  color: var(--forest-900);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--parchment);
+  border-left: 3px solid var(--forest-500);
+  border-radius: 0 6px 6px 0;
+  padding: .6rem .9rem;
+}
